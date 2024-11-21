@@ -1,0 +1,10 @@
+.parent {
+  display: flex;
+  border: 1px solid black;
+}
+
+.parent div {
+  display: flex;
+  flex: 1 1 10%;
+  border: 1px solid cyan;
+}
