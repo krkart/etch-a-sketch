@@ -10,10 +10,23 @@
 
 <body>
   <div class="container">
-    <input type="number" id="squares" />
-    <button id="submit-btn">Submit</button>
-    <div class="board">
+    <div class="top-container">
+      <div class="slidecontainer">
+        <p>Blocks per Board: <span class="slider-value">16</span></p>
+        <input type="range" min="1" max="100" value="16" class="slider">
+      </div>
+      <button class="clear-btn">Clear All</button>
     </div>
+
+    <div class="middle-container">
+      <button class="draw">Draw</button>
+      <button class="random">Random</button>
+      <button class="darken">Darken</button>
+      <button class="lighten">Lighten</button>
+      <button class="erase">Erase</button>
+    </div>
+
+    <div class="board"></div>
   </div>
 
   <script src="./main.js"></script>

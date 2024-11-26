@@ -1,10 +1,10 @@
 let board = document.querySelector('.board');
-let input = document.querySelector('#squares');
-let btn = document.querySelector('#submit-btn');
+let slider = document.querySelector('input[type="range"]');
+let sliderValue = document.querySelector('.slider-value');
 
-btn.addEventListener('click', () => {
-  let userInput = parseInt(input.value);
-  console.log(userInput);
+slider.addEventListener('mouseup', () => {
+  let userInput = parseInt(slider.value);
+  sliderValue.textContent = `${userInput}`;
   for (let i = 1; i <= userInput; i++) {
     let col = document.createElement('div')
     col.id = `c${i}`;

@@ -3,6 +3,33 @@ body{
   width: 100%;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75vh;
+}
+
+.top-container, .middle-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.slidecontainer, .clear-btn {
+  width: 50%;
+}
+
+.middle-container button {
+  width: 20%;
+}
+
+.slidecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .board {
   display: flex;
   border: 1px solid black;
@@ -11,7 +38,7 @@ body{
   margin: 3em;
 }
 
-.col div:hover {
+.block:hover {
   background-color: aquamarine;
 }
 
