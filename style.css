@@ -1,6 +1,10 @@
 body{
   height: 100%;
   width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
@@ -8,15 +12,18 @@ body{
   flex-direction: column;
   align-items: center;
   width: 75vh;
+  border: 1px solid black;
 }
 
-.top-container, .middle-container {
+.top-container, 
+.middle-container {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
 
-.slidecontainer, .clear-btn {
+.slider-container, 
+.clear-btn {
   width: 50%;
 }
 
@@ -24,7 +31,7 @@ body{
   width: 20%;
 }
 
-.slidecontainer {
+.slider-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,10 +39,8 @@ body{
 
 .board {
   display: flex;
-  border: 1px solid black;
   height: 75vh;
   width: 75vh;
-  margin: 3em;
 }
 
 .block:hover {
