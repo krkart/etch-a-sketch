@@ -27,10 +27,33 @@ p{
   width: 100%;
 }
 
-.slider-container, 
-#reset-btn {
-  width: 50%;
+.slider-container {
+  width: 45%;
   font-size: medium;
+}
+
+#reset-btn {
+  width: 25%;
+  font-size: medium;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  font-size: x-small;
+  border-bottom: 1px solid gray;
+}
+
+form label {
+  margin: 0.5vh;
+}
+
+form input {
+  padding: 0;
+  margin: 0.4vh 1vh 0.4vh 0vh;
+  border: none;
+  block-size: 39px;
 }
 
 .bottom-container button {
@@ -47,6 +70,7 @@ button {
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
 }
 
 .board {
