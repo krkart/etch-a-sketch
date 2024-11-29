@@ -1,14 +1,15 @@
 let board = document.querySelector('.board');
 let slider = document.querySelector('input[type="range"]');
 let sliderValue = document.querySelector('.slider-value');
-let fg = document.getElementById('fg');
-let bg = document.getElementById('bg');
-let blocks = document.querySelectorAll('.block');
 let resetBtn = document.querySelector('#reset-btn');
-resetBtn.addEventListener('click', reset);
+let bg = document.getElementById('bg');
+let fg = document.getElementById('fg');
 
 reset();
-// colorGrounds();
+
+let blocks = document.querySelectorAll('.block');
+bg.addEventListener('input', updateBG);
+fg.addEventListener('input', updateFG);
 
 slider.addEventListener('mouseup', () => {
   board.replaceChildren();
@@ -48,10 +49,20 @@ function reset() {
   }
 }
 
-function colorGrounds() {
-  board.style.backgroundColor = bg.value;
-  blocks.style.backgroundColor.hover = fg.value;
+function updateFG() {
+  blocks.forEach(block => {
+    block.addEventListener('mouseover', () => {
+      block.style.backgroundColor = fg.value;
+    })
+  });
 }
+
+function updateBG() {
+  board.style.backgroundColor = bg.value;
+}
+
+resetBtn.addEventListener('click', reset);
+updateFG();
 
 /*
 function clearBoard() {
