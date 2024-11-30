@@ -51,6 +51,7 @@ function reset() {
   fg.value = '#000000';
   bg.value = '#ffffff';
   updateFG();
+  updateBG();
 }
 
 function updateFG() {

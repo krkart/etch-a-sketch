@@ -68,17 +68,14 @@ form input {
   height: 6vh;
 }
 
-.selected {
-  background-color: royalblue;
-  color: #fff;
-}
-
 button:hover {
   background-color: rgb(193, 227, 248);
+  color: #000;
 }
 
+.selected,
 button:active {
-  background-color: royalblue;
+  background-color: rgb(0, 92, 200);
   color: #fff;
 }
 
