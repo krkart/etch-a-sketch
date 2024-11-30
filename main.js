@@ -28,6 +28,7 @@ slider.addEventListener('mouseup', () => {
       col.appendChild(row);
     }
   }
+  updateFG();
 })
 
 function reset() {
@@ -47,9 +48,13 @@ function reset() {
       col.appendChild(row);
     }
   }
+  fg.value = '#000000';
+  bg.value = '#ffffff';
+  updateFG();
 }
 
 function updateFG() {
+  let blocks = document.querySelectorAll('.block');
   blocks.forEach(block => {
     block.addEventListener('mouseover', () => {
       block.style.backgroundColor = fg.value;
