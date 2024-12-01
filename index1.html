@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Toggler</title>
+  <style>
+    .content {
+      font-family: 'Lato';
+      max-width: 100%;
+      font-size: 20px;
+      letter-spacing: 4px;
+      color: #e8eaed;
+      display: none;
+      border-top: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <section class="Container">
+    <div class="tabs">
+      <button class="link" onclick="openTab(event, 'About')">About</button>
+      <button class="link" onclick="openTab(event, 'Hire')">Why You Should Hire Me</button>
+      <button class="link" onclick="openTab(event, 'Contact')">Contact</button>
+    </div>
+  </section>
+
+  <section class="Container2">
+    <div id="About" class="content">About</div>
+
+    <div id="Hire" class="content">Hire</div>
+
+    <div id="Contact" class="content">Contact</div>
+  </section>
+
+  <script>
+    const openTab = (() => {
+      let hidden = false;
+      return (click, openTabId) => {
+        document.querySelectorAll('.content').forEach(
+          content => content.style.display = hidden ? 'block' : 'none'
+        );
+        document.querySelectorAll('.links').forEach(link => {
+          if (hidden) link.classList.add('active');
+          else link.classList.remove('active');
+        });
+
+        document.getElementById(openTabId).style.display = "block";
+        click.currentTarget.classList.toggle('active');
+        hidden = !hidden;
+      }
+    })();
+
+  </script>
+</body>
+
+</html>

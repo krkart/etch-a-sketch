@@ -6,10 +6,18 @@ body{
   flex-direction: column;
   align-items: center;
   font-size: 100%;
+  font-family: sans-serif;
+  background-color: #fff;
+  background-image: url('tile-pattern-line-square.jpg');
+  background-size: 100%;
 }
 
 p{
   margin: auto;
+}
+
+h1{
+  color: #fff;
 }
 
 .container {
@@ -25,6 +33,7 @@ p{
   display: flex;
   flex-direction: row;
   width: 100%;
+  background-color: #fff;
 }
 
 .top-container {
@@ -62,19 +71,21 @@ form input {
   box-sizing: border-box;
 }
 
-.bottom-container button {
+.bottom-container input {
   width: 20%;
   font-size: medium;
   height: 6vh;
 }
 
-button:hover {
-  background-color: rgb(193, 227, 248);
+button:hover,
+input[type='button']:hover {
+  background-color: paleturquoise;
   color: #000;
 }
 
-.selected,
-button:active {
+.active,
+button:active,
+input[type='button']:active {
   background-color: rgb(0, 92, 200);
   color: #fff;
 }

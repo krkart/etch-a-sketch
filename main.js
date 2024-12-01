@@ -2,6 +2,7 @@ let board = document.querySelector('.board');
 let slider = document.querySelector('input[type="range"]');
 let sliderValue = document.querySelector('.slider-value');
 let resetBtn = document.querySelector('#reset-btn');
+let buttons = document.querySelectorAll('.bottom-container button');
 let bg = document.getElementById('bg');
 let fg = document.getElementById('fg');
 
@@ -53,6 +54,28 @@ function reset() {
   updateFG();
   updateBG();
 }
+
+/*
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    button.classList.add('active');
+  })
+})
+*/
+
+const activated = (() => {
+  let hidden = false;
+  return (click, activeId) => {
+   buttons.forEach(button => {
+      if (hidden) button.classList.remove('active');
+      // else button.classList.add('active');
+    });
+
+    document.getElementById(activeId).classList.add('active');
+    // click.currentTarget.classList.toggle('active');
+    hidden = !hidden;
+  }
+})();
 
 function updateFG() {
   let blocks = document.querySelectorAll('.block');
