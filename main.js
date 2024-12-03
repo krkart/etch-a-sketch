@@ -1,6 +1,6 @@
 let board = document.querySelector('.board');
-let slider = document.querySelector('input[type="range"]');
-let sliderValue = document.querySelector('.slider-value');
+let slider = document.getElementById('slider');
+let sliderValue = document.getElementById('slider-value');
 let resetBtn = document.querySelector('#reset-btn');
 let buttons = document.querySelectorAll('.bottom-container button');
 let bg = document.getElementById('bg');

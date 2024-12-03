@@ -19,8 +19,8 @@
         <input type="color" id="bg" value="#ffffff">
       </form>
       <div class="slider-container">
-        <p>Blocks per Board: <span class="slider-value">16</span></p>
-        <input type="range" min="1" max="100" value="16" class="slider">
+        <label for="slider">Blocks per Board: <span id="slider-value">16</span></label>
+        <input type="range" id="slider" min="1" max="100" value="16">
       </div>
       <button id="reset-btn">Reset</button>
     </div>
@@ -28,11 +28,19 @@
     <div class="board"></div>
 
     <div class="bottom-container">
-      <input type="button" id="Draw" value="Draw" onclick="activated(event, 'Draw')" class="active">
-      <input type="button" id="Random" value="Random" onclick="activated(event, 'Random')">
-      <input type="button" id="Darken" value="Darken" onclick="activated(event, 'Darken')">
-      <input type="button" id="Lighten" value="Lighten" onclick="activated(event, 'Lighten')">
-      <input type="button" id="Erase" value="Erase" onclick="activated(event, 'Erase')">
+      <input type="radio" name="pencil" id="draw" checked>
+      <label for="draw">Draw</label>
+      <input type="radio" name="pencil" id="random">
+      <label for="random">Random</label>
+      <input type="radio" name="pencil" id="darken">
+      <label for="darken">Darken</label>
+      <!-- try taking out some of these options -->
+      <input type="radio" name="pencil" id="lighten">
+      <label for="lighten">Lighten</label>
+      <input type="radio" name="pencil" id="erase">
+      <label for="erase">Eraser</label>
+      <!-- leave this "slide" -->
+      <a class="slide" aria-hidden="true"></a>
     </div>
   </div>
 
