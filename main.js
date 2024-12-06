@@ -2,7 +2,7 @@ let board = document.querySelector('.board');
 let slider = document.getElementById('slider');
 let sliderValue = document.getElementById('slider-value');
 let resetBtn = document.querySelector('#reset-btn');
-let buttons = document.querySelectorAll('.bottom-container button');
+let tools = document.querySelectorAll('.bottom-container input[type="radio"]');
 let bg = document.getElementById('bg');
 let fg = document.getElementById('fg');
 
@@ -25,11 +25,12 @@ slider.addEventListener('mouseup', () => {
       let row = document.createElement('div');
       row.id = `c${i}r${j}`;
       row.className = 'block';
-      row.style.flexBasis = `${100/userInput}%`;
+      row.style.flexBasis = `${100 / userInput}%`;
       col.appendChild(row);
     }
   }
-  updateFG();
+  updateFG('draw');
+  defaultTool();
 })
 
 function reset() {
@@ -45,45 +46,62 @@ function reset() {
       let row = document.createElement('div');
       row.id = `c${i}r${j}`;
       row.className = 'block';
-      row.style.flexBasis = `${100/slider.value}%`;
+      row.style.flexBasis = `${100 / slider.value}%`;
       col.appendChild(row);
     }
   }
   fg.value = '#000000';
   bg.value = '#ffffff';
-  updateFG();
+  updateFG('draw');
+  defaultTool();
   updateBG();
 }
 
-/*
-buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-    button.classList.add('active');
-  })
-})
-*/
-
-const activated = (() => {
-  let hidden = false;
-  return (click, activeId) => {
-   buttons.forEach(button => {
-      if (hidden) button.classList.remove('active');
-      // else button.classList.add('active');
-    });
-
-    document.getElementById(activeId).classList.add('active');
-    // click.currentTarget.classList.toggle('active');
-    hidden = !hidden;
+const active = (() => {
+  return (click, toolId) => {
+    tools.forEach(tool => updateFG(toolId))
   }
 })();
 
-function updateFG() {
+function defaultTool() {
+  let draw = document.getElementById('draw');
+  draw.checked = true;
+}
+
+function updateFG(toolId) {
   let blocks = document.querySelectorAll('.block');
-  blocks.forEach(block => {
-    block.addEventListener('mouseover', () => {
-      block.style.backgroundColor = fg.value;
-    })
-  });
+
+  if (toolId === 'draw') {
+    blocks.forEach(block => {
+      block.addEventListener('mouseover', () => {
+        block.style.backgroundColor = fg.value;
+      })
+    });
+  } else if (toolId === 'random') {
+    blocks.forEach(block => {
+      block.addEventListener('mouseover', () => {
+        block.style.backgroundColor = 'red';
+      })
+    });
+  } else if (toolId === 'darken') {
+    blocks.forEach(block => {
+      block.addEventListener('mouseover', () => {
+        block.style.backgroundColor = 'gray';
+      })
+    });
+  } else if (toolId === 'lighten') {
+    blocks.forEach(block => {
+      block.addEventListener('mouseover', () => {
+        block.style.backgroundColor = 'white';
+      })
+    });
+  } else if (toolId === 'eraser') {
+    blocks.forEach(block => {
+      block.addEventListener('mouseover', () => {
+        block.style.backgroundColor = bg.value;
+      })
+    });
+  }
 }
 
 function updateBG() {
@@ -91,7 +109,7 @@ function updateBG() {
 }
 
 resetBtn.addEventListener('click', reset);
-updateFG();
+updateFG('draw');
 
 /*
 function clearBoard() {

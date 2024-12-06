@@ -76,7 +76,7 @@ form input {
 }
 
 button:hover {
-  background-color: grey;
+  background-color: lightgray;
   color: #000;
 }
 
@@ -306,9 +306,9 @@ Because a11y
 
 /*
 Demo purposes only
-*/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
+*/

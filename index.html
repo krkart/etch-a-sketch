@@ -28,17 +28,17 @@
     <div class="board"></div>
 
     <div class="bottom-container">
-      <input type="radio" name="pencil" id="draw" checked>
+      <input type="radio" name="tool" id="draw" onclick="active(event, 'draw')" checked>
       <label for="draw">Draw</label>
-      <input type="radio" name="pencil" id="random">
+      <input type="radio" name="tool" id="random" onclick="active(event, 'random')">
       <label for="random">Random</label>
-      <input type="radio" name="pencil" id="darken">
+      <input type="radio" name="tool" id="darken" onclick="active(event, 'darken')">
       <label for="darken">Darken</label>
       <!-- try taking out some of these options -->
-      <input type="radio" name="pencil" id="lighten">
+      <input type="radio" name="tool" id="lighten" onclick="active(event, 'lighten')">
       <label for="lighten">Lighten</label>
-      <input type="radio" name="pencil" id="erase">
-      <label for="erase">Eraser</label>
+      <input type="radio" name="tool" id="eraser" onclick="active(event, 'eraser')">
+      <label for="eraser">Eraser</label>
       <!-- leave this "slide" -->
       <a class="slide" aria-hidden="true"></a>
     </div>
