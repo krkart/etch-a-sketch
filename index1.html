@@ -19,6 +19,14 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
+    .Container3 div {
+      margin: 2vh;
+      padding: 1vh;
+      width: 100px;
+      height: 40px;
+      background: gray;
+    }
   </style>
 </head>
 
@@ -39,6 +47,12 @@
     <div id="Contact" class="content">Contact</div>
   </section>
 
+  <section class="Container3">
+    <div class="randombox">Random</div>
+    <div class="darkenbox">Darken</div>
+    <div class="lightenbox">Lighten</div>
+  </section>
+
   <script>
     const openTab = (() => {
       let hidden = false;
@@ -56,6 +70,44 @@
         hidden = !hidden;
       }
     })();
+
+    const randombox = document.querySelector('.randombox');
+
+    randombox.addEventListener('mouseover', function () {
+      var r = Math.floor(Math.random() * 256);
+      var g = Math.floor(Math.random() * 256);
+      var b = Math.floor(Math.random() * 256);
+      var bgColor = "rgb(" + r + "," + g + "," + b + ")";
+      document.querySelector('.randombox').style.backgroundColor = bgColor;
+    });
+
+    const darkenbox = document.querySelector('.darkenbox');
+    const lightenbox = document.querySelector('.lightenbox');
+    let dimFactor = 0.1; // Adjust this value to control the dimming intensity
+
+    darkenbox.addEventListener('mouseover', () => {
+      const currentColor = window.getComputedStyle(darkenbox).backgroundColor;
+      const rgbValues = currentColor.match(/\d+/g);
+
+      // Calculate the new RGB values after dimming
+      const newR = Math.max(0, parseInt(rgbValues[0]) - (rgbValues[0] * dimFactor));
+      const newG = Math.max(0, parseInt(rgbValues[1]) - (rgbValues[1] * dimFactor));
+      const newB = Math.max(0, parseInt(rgbValues[2]) - (rgbValues[2] * dimFactor));
+
+      darkenbox.style.backgroundColor = `rgb(${newR}, ${newG}, ${newB})`;
+    });
+
+    lightenbox.addEventListener('mouseover', () => {
+      const currentColor = window.getComputedStyle(lightenbox).backgroundColor;
+      const rgbValues = currentColor.match(/\d+/g);
+
+      // Calculate the new RGB values after dimming
+      const newR = Math.max(0, parseInt(rgbValues[0]) + (rgbValues[0] * dimFactor));
+      const newG = Math.max(0, parseInt(rgbValues[1]) + (rgbValues[1] * dimFactor));
+      const newB = Math.max(0, parseInt(rgbValues[2]) + (rgbValues[2] * dimFactor));
+
+      lightenbox.style.backgroundColor = `rgb(${newR}, ${newG}, ${newB})`;
+    });
 
   </script>
 </body>

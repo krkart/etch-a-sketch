@@ -73,6 +73,8 @@ form input {
   border: none;
   block-size: 7vh;
   box-sizing: border-box;
+  background-color: white;
+  color: white;
 }
 
 button:hover {
@@ -111,7 +113,7 @@ button:active {
   display: flex;
   justify-content: center;
   width: 100%;
-  line-height: 2em;
+  line-height: 7vh;
   /* don't allow highlighting the text inside the toggle */
   user-select: none;
 }
