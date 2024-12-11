@@ -71,6 +71,22 @@ function defaultTool() {
 function updateFG(toolId) {
   let blocks = document.querySelectorAll('.block');
 
+  function updateContrast(element, darkFactor) {
+    const currentColor = window.getComputedStyle(element).backgroundColor
+      .match(/\d+/g)
+      .map(valueStr => {  // Calculate the new RGB values after dimming
+        if (darkFactor) {
+          // Lower each color value by 10, limiting to 0. First convert from string to number.
+          return Math.max(+valueStr - 10, 0);
+        } else {
+          // Increase each color value by 10, limiting to 255. First convert from string to number.
+          return Math.min(+valueStr + 10, 255);
+        }
+      });
+
+    return `rgb(${currentColor.join()})`;
+  }
+
   if (toolId === 'draw') {
     blocks.forEach(block => {
       block.addEventListener('mouseover', () => {
@@ -79,20 +95,21 @@ function updateFG(toolId) {
     });
   } else if (toolId === 'random') {
     blocks.forEach(block => {
-      block.addEventListener('mouseover', () => {
-        block.style.backgroundColor = 'red';
+      block.addEventListener('mouseover', function (e) {
+        this.style.backgroundColor = `hsl(${Math.floor(Math.random() * 360)}, 100%, 36%)`;
       })
     });
   } else if (toolId === 'darken') {
     blocks.forEach(block => {
-      block.addEventListener('mouseover', () => {
-        block.style.backgroundColor = 'gray';
+      block.addEventListener('mouseover', function (e) {
+        this.style.backgroundColor = updateContrast(this, true);
       })
     });
   } else if (toolId === 'lighten') {
     blocks.forEach(block => {
-      block.addEventListener('mouseover', () => {
-        block.style.backgroundColor = 'white';
+      block.addEventListener('mouseover', function (e) {
+        console.log(updateContrast(this, false));
+        this.style.backgroundColor = updateContrast(this, false);
       })
     });
   } else if (toolId === 'eraser') {

@@ -27,6 +27,10 @@
       height: 40px;
       background: gray;
     }
+
+    #cyan {
+      background: darkcyan;
+    }
   </style>
 </head>
 
@@ -51,6 +55,8 @@
     <div class="randombox">Random</div>
     <div class="darkenbox">Darken</div>
     <div class="lightenbox">Lighten</div>
+    <div class="darkenbox" id="cyan">DarkenCyan</div>
+    <div class="lightenbox" id="cyan">LightenCyan</div>
   </section>
 
   <script>
@@ -81,12 +87,13 @@
       document.querySelector('.randombox').style.backgroundColor = bgColor;
     });
 
-    const darkenbox = document.querySelector('.darkenbox');
-    const lightenbox = document.querySelector('.lightenbox');
+    let darkenbox = document.querySelectorAll('.darkenbox');
+    let lightenbox = document.querySelectorAll('.lightenbox');
     let dimFactor = 0.1; // Adjust this value to control the dimming intensity
 
-    darkenbox.addEventListener('mouseover', () => {
-      const currentColor = window.getComputedStyle(darkenbox).backgroundColor;
+    darkenbox.forEach(box => {
+      box.addEventListener('mouseover', () => {
+      const currentColor = window.getComputedStyle(box).backgroundColor;
       const rgbValues = currentColor.match(/\d+/g);
 
       // Calculate the new RGB values after dimming
@@ -94,11 +101,13 @@
       const newG = Math.max(0, parseInt(rgbValues[1]) - (rgbValues[1] * dimFactor));
       const newB = Math.max(0, parseInt(rgbValues[2]) - (rgbValues[2] * dimFactor));
 
-      darkenbox.style.backgroundColor = `rgb(${newR}, ${newG}, ${newB})`;
+      box.style.backgroundColor = `rgb(${newR}, ${newG}, ${newB})`;
+      });
     });
 
-    lightenbox.addEventListener('mouseover', () => {
-      const currentColor = window.getComputedStyle(lightenbox).backgroundColor;
+    lightenbox.forEach(box => {
+      box.addEventListener('mouseover', () => {
+      const currentColor = window.getComputedStyle(box).backgroundColor;
       const rgbValues = currentColor.match(/\d+/g);
 
       // Calculate the new RGB values after dimming
@@ -106,7 +115,8 @@
       const newG = Math.max(0, parseInt(rgbValues[1]) + (rgbValues[1] * dimFactor));
       const newB = Math.max(0, parseInt(rgbValues[2]) + (rgbValues[2] * dimFactor));
 
-      lightenbox.style.backgroundColor = `rgb(${newR}, ${newG}, ${newB})`;
+      box.style.backgroundColor = `rgb(${newR}, ${newG}, ${newB})`;
+      });
     });
 
   </script>
